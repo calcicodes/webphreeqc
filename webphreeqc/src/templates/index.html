@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebPHREEQC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="input-area">
+            <textarea id="codeInput">{{ initial_input }}</textarea>
+        </div>
+        <div class="run-button">
+            <button id="runButton">Run >></button>
+        </div>
+        <div class="output-area">
+            <textarea id="codeOutput" placeholder="Output will be displayed here..." readonly></textarea>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
