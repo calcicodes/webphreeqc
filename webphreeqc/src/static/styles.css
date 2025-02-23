@@ -18,33 +18,54 @@ input[type="text"] {
     font-size: 16px;
 }
 
+select {
+    width: 100%;
+    padding: 10px;
+    min-height: 3vh;
+    font-size: 14px;
+}
+
 textarea {
     width: 46vw;
-    min-height: 100%;
 }
 
 .output-area {
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea#codeInput{
+    min-height: calc(100% - 3vh);
 }
 
 textarea#codeOutputTerminal{
-    min-height: 25%;
+    min-height: calc(25% - 5px);
+    background-color: aliceblue;
 }
 
 textarea#codeOutput{
-    min-height: 75%;
+    min-height: calc(75% - 5px);
+    background-color: azure;
 }
 
-.run-button {
+.control-pane {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     width: 50%;
+    min-width: 4vw;
     margin: 20px 20px;
 }
 
 button {
     width: 100%;
+    min-height: 90vh;
     padding: 10px;
     font-size: 16px;
     background-color: #4CAF50;

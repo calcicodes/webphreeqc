@@ -1,3 +1,4 @@
+// run code and display output
 document.addEventListener('DOMContentLoaded', function() {
     const runButton = document.getElementById('runButton');
     const inputField = document.getElementById('codeInput');
@@ -25,5 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error:', error);
         });
+    });
+});
+
+// update template code
+document.addEventListener('DOMContentLoaded', function() {
+    const inputSelector = document.getElementById('inputSelector');
+    const inputField = document.getElementById('codeInput');
+
+    // Handle template change
+    inputSelector.addEventListener('change', function() {
+        const template = inputSelector.value;
+        const templateCode = template;
+        inputField.value = templateCode;
     });
 });

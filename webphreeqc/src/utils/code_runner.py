@@ -5,7 +5,7 @@ from pathlib import Path
 database_path = Path("../phreeqc-3.8.6-17100/database")
 user_script_path = Path("user_scripts")
 
-available_databases = [
+database_options = [
     'phreeqc.dat',
     'pitzer.dat',
     'minteqv4.dat',

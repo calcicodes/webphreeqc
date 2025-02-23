@@ -10,8 +10,18 @@
     <div class="container">
         <div class="input-area">
             <textarea id="codeInput">{{ initial_input }}</textarea>
+            <select id="inputSelector" class="input-selector">
+                {% for key, value in input_options.items() %}
+                    <option value="{{ value }}">{{ key }}</option>
+                {% endfor %}
+            </select>
         </div>
-        <div class="run-button">
+        <div class="control-pane">
+            <select id="databaseSelector" class="input-selector">
+                {% for key in database_options %}
+                    <option value="{{ key }}">{{ key }}</option>
+                {% endfor %}
+            </select>
             <button id="runButton">Run >></button>
         </div>
         <div class="output-area">

@@ -1,9 +1,7 @@
-from dataclasses import dataclass
 
-@dataclass
-class PhreeqcInputs:
-    default: str = "Write your PHREEQC input file here..."
-    seawater: str = """TITLE Example 1.--Add uranium and speciate seawater.
+PHREEQC_INPUT_TEMPLATES = {
+    "Blank": "Write your PHREEQC input file here, or select a template from the dropdown below...",
+    "Seawater": """TITLE Example 1.--Add uranium and speciate seawater.
 SOLUTION 1  SEAWATER FROM NORDSTROM AND OTHERS (1979)
         units   ppm
         pH      8.22
@@ -73,4 +71,5 @@ PHASES
         log_k          -3.490
         delta_h        -18.630 kcal
 END
-"""
+""",
+}
