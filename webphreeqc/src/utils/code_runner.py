@@ -1,20 +1,11 @@
 import os
 import subprocess
-from pathlib import Path
-
-database_path = Path("../phreeqc-3.8.6-17100/database")
-user_script_path = Path("user_scripts")
-
-database_options = [
-    'phreeqc.dat',
-    'pitzer.dat',
-    'minteqv4.dat',
-]
+from . import config
 
 def run_code(user_id, code, database="phreeqc.dat"):
     
     # generate input file
-    input_file = str(user_script_path / f"{user_id}.phreeqc")
+    input_file = str(config.user_script_path / f"{user_id}.phreeqc")
     
     # write code to file
     with open(input_file, "w") as code_file:
@@ -22,7 +13,7 @@ def run_code(user_id, code, database="phreeqc.dat"):
     
     # generate output file path
     output_file = str(input_file + ".out")
-    database_file = str(database_path / database)
+    database_file = str(config.database_path / database)
     
     # run phreeqc
     result = subprocess.run(['phreeqc', input_file, output_file, database_file], capture_output=True, text=True)

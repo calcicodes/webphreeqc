@@ -9,20 +9,28 @@
 <body>
     <div class="container">
         <div class="input-area">
-            <textarea id="codeInput">{{ initial_input }}</textarea>
-            <select id="inputSelector" class="input-selector">
-                {% for key, value in input_options.items() %}
-                    <option value="{{ value }}">{{ key }}</option>
-                {% endfor %}
-            </select>
+            <div class="selector-line">
+                <label>Template:</label>
+                <select id="inputSelector" class="input-selector">
+                    {% for key, value in input_options.items() %}
+                        <option value="{{ value }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <textarea id="codeInput" placeholder="Write your PHREEQC input file here, or select a template from the dropdown above...">{{ initial_input }}</textarea>
+            
+            <div class="selector-line">
+                <label>Database:</label>
+                <select id="databaseSelector"   class="input-selector">
+                    {% for key in database_options %}
+                        <option value="{{ key }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <textarea id="databaseView" readonly>{{ database_text }}</textarea>
         </div>
         <div class="control-pane">
-            <select id="databaseSelector" class="input-selector">
-                {% for key in database_options %}
-                    <option value="{{ key }}">{{ key }}</option>
-                {% endfor %}
-            </select>
-            <button id="runButton">Run >></button>
+            <button id="runButton">><br>R<br>U<br>N<br>></button>
         </div>
         <div class="output-area">
             <textarea id="codeOutputTerminal" placeholder="Terminal output will be displayed here." readonly></textarea>

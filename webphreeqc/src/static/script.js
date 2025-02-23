@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputField = document.getElementById('codeInput');
     const outputField = document.getElementById('codeOutput');
     const outputTerminal = document.getElementById('codeOutputTerminal');
+    const databaseName = document.getElementById('databaseSelector');
 
     console.log(inputField);
 
@@ -15,11 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ user_code: userInput })
+            body: JSON.stringify({ user_code: userInput, database: databaseName.value })
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.output.terminal);
             outputTerminal.value = data.output.terminal;
             outputField.value = data.output.output;
         })
@@ -39,5 +39,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const template = inputSelector.value;
         const templateCode = template;
         inputField.value = templateCode;
+    });
+});
+
+// update database view
+document.addEventListener('DOMContentLoaded', function() {
+    const databaseSelector = document.getElementById('databaseSelector');
+    const databaseView = document.getElementById('databaseView');
+
+    // Handle database change
+    databaseSelector.addEventListener('change', function() {
+        const database = databaseSelector.value;
+        fetch(`/get_database/${database}`)
+            .then(response => response.json())
+            .then(data => {
+                databaseView.value = data.database;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                databaseView.value = 'Error: could not load database';
+            });
     });
 });

@@ -12,68 +12,82 @@ body {
     height: calc(100vh - 40px);
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-}
-
 select {
     width: 100%;
-    padding: 10px;
-    min-height: 3vh;
+    padding: 5px;
+    min-height: 2vh;
     font-size: 14px;
 }
 
 textarea {
-    width: 46vw;
+    width: 100%;
 }
 
 .output-area {
+    flex: 6;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    gap: 10px;
 }
 
 .input-area {
+    flex: 6;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    gap: 10px;
 }
 
 textarea#codeInput{
-    min-height: calc(100% - 3vh);
+    flex: 3;
 }
 
-textarea#codeOutputTerminal{
-    min-height: calc(25% - 5px);
-    background-color: aliceblue;
-}
-
-textarea#codeOutput{
-    min-height: calc(75% - 5px);
+textarea#databaseView{
+    flex: 1;
     background-color: azure;
 }
 
+textarea#codeOutputTerminal{
+    flex: 1;
+    background-color: lightblue;
+}
+
+textarea#codeOutput{
+    flex: 4;
+    background-color:aliceblue;
+}
+
+.selector-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
 .control-pane {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 50%;
-    min-width: 4vw;
-    margin: 20px 20px;
+    max-width: 3vw;
+    margin: 0 20px;
 }
 
 button {
     width: 100%;
-    min-height: 90vh;
+    min-height: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: #4CAF50;
+    background-color: cadetblue;
     color: white;
     border: none;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 20pt;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: darkcyan;
 }
