@@ -23,6 +23,19 @@ textarea {
     min-height: 100%;
 }
 
+.output-area {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea#codeOutputTerminal{
+    min-height: 25%;
+}
+
+textarea#codeOutput{
+    min-height: 75%;
+}
+
 .run-button {
     display: flex;
     justify-content: center;

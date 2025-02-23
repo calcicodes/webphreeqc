@@ -15,7 +15,8 @@
             <button id="runButton">Run >></button>
         </div>
         <div class="output-area">
-            <textarea id="codeOutput" placeholder="Output will be displayed here..." readonly></textarea>
+            <textarea id="codeOutputTerminal" placeholder="Terminal output will be displayed here." readonly></textarea>
+            <textarea id="codeOutput" placeholder="PHREEQC output will be displayed here." readonly></textarea>
         </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
