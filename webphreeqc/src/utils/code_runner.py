@@ -18,24 +18,16 @@ def run_code(user_id, code, database="phreeqc.dat"):
     # run phreeqc
     result = subprocess.run(['phreeqc', input_file, output_file, database_file], capture_output=True, text=True)
     
-    outlines = result.stderr
+    outlines = result.stderr.splitlines()
+    outlines = '\n'.join(outlines[6:])
     
     # read output file
     with open(output_file, "r") as fout:
         output = fout.readlines()
         output = ''.join(output[4:])
     
-    print(input_file)
-    print(output_file)
-    
     # cleanup
     os.remove(input_file)
     os.remove(output_file)
-    
-    out = (
-        outlines + 
-        '\n\n\n################ PHREEQC OUTPUT STARTS ################\n\n\n' + 
-        output
-    )
     
     return {'terminal': outlines, 'output': output}
