@@ -1,0 +1,40 @@
+TITLE Sequential dissolution of CaCO3 with CO2(g) in a closed system
+
+SOLUTION 1
+    units   mol/kgw
+    temp    25.0
+    pH      7.0
+    pe      4.0
+    redox   pe
+    units   mol/kgw
+    density 1.0
+    water   1.0 # kg
+
+EQUILIBRIUM PHASES
+   CO2(g)  -3.376 # log10(420e-6) = -3.376
+
+SAVE solution 1
+END
+
+USE solution 1
+REACTION 1
+    Calcite 1
+    0.005 in 10 steps
+
+EQUILIBRIUM PHASES
+   CO2(g)  -3.376 # log10(420e-6) = -3.376
+
+PRINT
+        -reset false
+        -user_print true
+
+USER_PRINT
+-start
+  60 PRINT "Reaction step number: ", STEP_NO
+  70 PRINT "CaCO3 added:          ", RXN
+  80 PRINT "CaCO3 SI:            ", SI("Calcite")
+ 110 PRINT "Ca:                  ", TOT("Ca")
+ 120 PRINT "C(4):                  ", TOT("C(4)")
+-end
+
+END
