@@ -6,8 +6,8 @@ def run_code(user_id, code, database="phreeqc.dat"):
         
     # check for output file flag
     if "<<OUTPUT FILE>>" in code:
-        selected_output_file = str(config.user_script_path / f"{user_id}.selected_output")
-        code = code.replace("<<OUTPUT FILE>>", selected_output_file)
+        selected_output_file = config.user_script_path / f"{user_id}.selected_output"
+        code = code.replace("<<OUTPUT FILE>>", str(selected_output_file))
     else:
         selected_output_file = None
     
@@ -39,10 +39,9 @@ def run_code(user_id, code, database="phreeqc.dat"):
     os.remove(output_file)
     
     # if produced, read selected output file
-    if selected_output_file is not None:
-        with open(selected_output_file, "r") as fout:
+    if selected_output_file.exists():
+        with open(str(selected_output_file), "r") as fout:
             selected_output = fout.read()
-        output = selected_output
         os.remove(selected_output_file)
     else:
         selected_output = ''
