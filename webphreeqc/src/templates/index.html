@@ -33,8 +33,15 @@
             <button id="runButton">><br>R<br>U<br>N<br>></button>
         </div>
         <div class="output-area">
-            <textarea id="codeOutputTerminal" placeholder="Terminal output will be displayed here." readonly></textarea>
-            <textarea id="codeOutput" placeholder="PHREEQC output will be displayed here." readonly></textarea>
+            <div class="selector-line">
+                <label>Output:</label>
+                <select id="outputSelector" class="input-selector">
+                    {% for key, value in output_options.items() %}
+                        <option value="{{ value }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <textarea id="codeOutput" readonly></textarea>
         </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>

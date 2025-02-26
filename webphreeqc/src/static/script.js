@@ -1,15 +1,21 @@
-// run code and display output
+// object for storing output data
+const outputData = {
+    'terminal': 'Output from the terminal window after running the code will be displayed here (useful to see error messages).',
+    'output': 'PHREEQC output will be displayed here.',
+    'selected_output': 'Output from any SELECTED_OUTPUT block will be displayed here.' 
+};
+
+// run code and save output data
 document.addEventListener('DOMContentLoaded', function() {
     const runButton = document.getElementById('runButton');
     const inputField = document.getElementById('codeInput');
-    const outputField = document.getElementById('codeOutput');
-    const outputTerminal = document.getElementById('codeOutputTerminal');
     const databaseName = document.getElementById('databaseSelector');
-
-    console.log(inputField);
+    const outputSelector = document.getElementById('outputSelector');
+    const outputField = document.getElementById('codeOutput');
 
     runButton.addEventListener('click', function() {
         const userInput = inputField.value;
+        const outputVariable = outputSelector.value;
 
         fetch('/run', {
             method: 'POST',
@@ -20,12 +26,27 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            outputTerminal.value = data.output.terminal;
-            outputField.value = data.output.output;
+            for (let item of Object.keys(data.output)) {
+                outputData[item] = data.output[item];
+            };
+            outputField.value = outputData[outputVariable];
         })
         .catch(error => {
             console.error('Error:', error);
         });
+    });
+});
+
+// select output to view
+document.addEventListener('DOMContentLoaded', function() {
+    const outputSelector = document.getElementById('outputSelector');
+    const outputField = document.getElementById('codeOutput');
+
+    outputSelector.value = outputSelector.options[0].value;
+    outputField.value = outputData[outputSelector.value];
+
+    outputSelector.addEventListener('change', function() {
+        outputField.value = outputData[outputSelector.value];
     });
 });
 

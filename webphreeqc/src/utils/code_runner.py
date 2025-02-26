@@ -5,11 +5,9 @@ from . import config
 def run_code(user_id, code, database="phreeqc.dat"):
         
     # check for output file flag
+    selected_output_file = config.user_script_path / f"{user_id}.selected_output"
     if "<<OUTPUT FILE>>" in code:
-        selected_output_file = config.user_script_path / f"{user_id}.selected_output"
         code = code.replace("<<OUTPUT FILE>>", str(selected_output_file))
-    else:
-        selected_output_file = None
     
     # generate input file
     input_file = str(config.user_script_path / f"{user_id}.phreeqc")
@@ -44,6 +42,6 @@ def run_code(user_id, code, database="phreeqc.dat"):
             selected_output = fout.read()
         os.remove(selected_output_file)
     else:
-        selected_output = ''
+        selected_output = "No SELECTED_OUTPUT specified in input file. If you're expecting something here, check that you have set `-file <<OUTPUT FILE>>` correctly."
     
     return {'terminal': outlines, 'output': output, 'selected_output': selected_output}

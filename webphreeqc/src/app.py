@@ -17,7 +17,8 @@ def index():
         initial_input=PHREEQC_INPUT_TEMPLATES['Blank'],
         database_options=config.database_options,
         input_options=PHREEQC_INPUT_TEMPLATES,
-        database_text=load_database(config.initial_database)
+        database_text=load_database(config.initial_database),
+        output_options=config.output_options
     )
 
 # @app.route('/get_template/<template_name>', methods=['GET'])

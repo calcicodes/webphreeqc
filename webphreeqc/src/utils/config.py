@@ -15,6 +15,12 @@ database_options = [
     'minteq.v4.dat',
 ]
 
+output_options = {
+    'Terminal': 'terminal',
+    'Output File': 'output',
+    'Selected Output Block': 'selected_output',
+}
+
 # file path checks
 if not phreeqc_executable.exists():
     raise FileNotFoundError(f"Phreeqc executable not found at {phreeqc_executable}")
