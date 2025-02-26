@@ -23,7 +23,7 @@ def run_code(user_id, code, database="phreeqc.dat"):
     database_file = str(config.database_path / database)
     
     # run phreeqc
-    result = subprocess.run(['phreeqc', input_file, output_file, database_file], capture_output=True, text=True)
+    result = subprocess.run([str(config.phreeqc_executable), input_file, output_file, database_file], capture_output=True, text=True)
     
     outlines = result.stderr.splitlines()
     outlines = '\n'.join(outlines[6:])
