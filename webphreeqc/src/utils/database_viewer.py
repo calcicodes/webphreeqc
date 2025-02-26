@@ -1,6 +1,9 @@
 from . import config
 
 def load_database(database):
+    if database == "None":
+        return "No database selected."
+    
     database_file = config.database_path / database
     
     if not database_file.exists():
