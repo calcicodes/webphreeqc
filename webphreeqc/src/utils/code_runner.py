@@ -3,10 +3,7 @@ import subprocess
 from . import config
 
 def run_code(user_id, code, database="phreeqc.dat"):
-    
-    # generate input file
-    input_file = str(config.user_script_path / f"{user_id}.phreeqc")
-    
+        
     # check for output file flag
     if "<<OUTPUT FILE>>" in code:
         selected_output_file = str(config.user_script_path / f"{user_id}.selected_output")
@@ -14,6 +11,10 @@ def run_code(user_id, code, database="phreeqc.dat"):
     else:
         selected_output_file = None
     
+    # generate input file
+    input_file = str(config.user_script_path / f"{user_id}.phreeqc")
+    print(str(input_file))
+
     # write code to file
     with open(input_file, "w") as code_file:
         code_file.write(code)

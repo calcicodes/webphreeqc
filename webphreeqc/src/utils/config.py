@@ -1,8 +1,11 @@
 from pathlib import Path
 
-phreeqc_executable = Path.home() / Path('phreeqc/bin/phreeqc')
-database_path = Path("../phreeqc-3.8.6-17100/database")
-user_script_path = Path("user_scripts")
+phreeqc_path = Path.home() / 'phreeqc'  # phreeqc install location
+
+phreeqc_executable = phreeqc_path / 'bin/phreeqc'
+database_path = phreeqc_path / "share/doc/phreeqc/database"
+
+user_script_path = Path(__file__).parent.parent.parent / 'user_scripts'
 
 initial_database = 'phreeqc.dat'
 
