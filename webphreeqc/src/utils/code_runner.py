@@ -19,7 +19,12 @@ def run_code(user_id, code, database="phreeqc.dat"):
     
     # generate output file path
     output_file = str(input_file + ".out")
-    database_file = str(config.database_path / database)
+    
+    # generate database file path
+    if database == "None":
+        database_file = ""
+    else:
+        database_file = str(config.database_path / database)
     
     # run phreeqc
     result = subprocess.run([str(config.phreeqc_executable), input_file, output_file, database_file], capture_output=True, text=True)

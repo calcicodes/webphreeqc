@@ -10,6 +10,7 @@ user_script_path = Path(__file__).parent.parent.parent / 'user_scripts'
 initial_database = 'phreeqc.dat'
 
 database_options = [
+    'None',
     'phreeqc.dat',
     'pitzer.dat',
     'minteq.v4.dat',
