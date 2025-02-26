@@ -7,6 +7,13 @@ def run_code(user_id, code, database="phreeqc.dat"):
     # generate input file
     input_file = str(config.user_script_path / f"{user_id}.phreeqc")
     
+    # check for output file flag
+    if "<<OUTPUT FILE>>" in code:
+        selected_output_file = str(config.user_script_path / f"{user_id}.selected_output")
+        code = code.replace("<<OUTPUT FILE>>", selected_output_file)
+    else:
+        selected_output_file = None
+    
     # write code to file
     with open(input_file, "w") as code_file:
         code_file.write(code)
@@ -30,4 +37,13 @@ def run_code(user_id, code, database="phreeqc.dat"):
     os.remove(input_file)
     os.remove(output_file)
     
-    return {'terminal': outlines, 'output': output}
+    # if produced, read selected output file
+    if selected_output_file is not None:
+        with open(selected_output_file, "r") as fout:
+            selected_output = fout.read()
+        output = selected_output
+        os.remove(selected_output_file)
+    else:
+        selected_output = ''
+    
+    return {'terminal': outlines, 'output': output, 'selected_output': selected_output}
