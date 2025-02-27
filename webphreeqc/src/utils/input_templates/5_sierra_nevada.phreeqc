@@ -1,0 +1,14 @@
+TITLE Alkaline Lakes - Evaporation of Sierra Nevada Spring Water
+SOLUTION 1  Typical Sierra Nevada Spring Water
+        -units   mmol/L
+        pH      6.8
+        temp    25.0
+        Si      0.41
+        Ca      0.26
+        Mg      0.071
+        Na      0.259
+        K       0.04
+        S(6)    0.025
+        Cl      0.03
+        Alkalinity 0.895 as HCO3
+END
