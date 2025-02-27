@@ -1,14 +1,36 @@
 TITLE Mixing of 'black smoker' fluid with seawater
-SOLUTION 1  Typical Sierra Nevada Spring Water
+SOLUTION 1  Black Smoker Fluid
         -units   mmol/L
-        pH      6.8
-        temp    25.0
-        Si      0.41
-        Ca      0.26
-        Mg      0.071
-        Na      0.259
-        K       0.04
-        S(6)    0.025
-        Cl      0.03
-        Alkalinity 0.895 as HCO3
+        pH      4.2
+        temp    273
+        Na      529
+        K       26.7
+        Mg      0
+        Ca      21.6
+        Cl      600
+        C(4)    2.0
+        S(6)    0
+        H2S     6.81
+        Si      20.2
+        O2      0
+
+SOLUTION 2 Seawater
+        -units   mmol/L
+        pH      8.1
+        temp    4
+        Na      480
+        K       10.1
+        Mg      54.5
+        Ca      10.5
+        Cl      559
+        C(4)    2.4
+        S(6)    29.5
+        H2S     0
+        Si      0.17
+        O2      123
+
+MIX
+        1 0.5
+        2 0.5
+
 END
