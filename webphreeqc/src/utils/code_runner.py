@@ -2,17 +2,31 @@ import os
 import subprocess
 from . import config
 
+DEBUG = True
+
 def run_code(user_id, code, database="phreeqc.dat"):
-        
+    
+    if DEBUG:
+        print(f"Running code for user {user_id}")
+    
     # check for output file flag
     selected_output_file = config.user_script_path / f"{user_id}.selected_output"
-    if "<<OUTPUT FILE>>" in code:
-        code = code.replace("<<OUTPUT FILE>>", str(selected_output_file))
+    if 'SELECTED_OUTPUT' in code:
+        code_lines = code.splitlines()
+        for i, line in enumerate(code_lines):
+            if '-file' in line:
+                code_lines[i] = f"    -file {selected_output_file}"
+        code = '\n'.join(code_lines)
+    
+    # if "<<OUTPUT FILE>>" in code:
+        # code = code.replace("<<OUTPUT FILE>>", str(selected_output_file))
     
     # generate input file
     input_file = str(config.user_script_path / f"{user_id}.phreeqc")
-    print(str(input_file))
 
+    if DEBUG:
+        print(f"Writing code to {input_file}")
+    
     # write code to file
     with open(input_file, "w") as code_file:
         code_file.write(code)
