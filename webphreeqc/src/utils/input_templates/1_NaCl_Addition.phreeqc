@@ -1,0 +1,16 @@
+TITLE Pure Water with NaCl Addition
+SOLUTION 1
+    units   mol/kgw
+    temp    25.0
+    pH      7.0
+    pe      4.0
+    redox   pe
+    units   mol/kgw
+    density 1.0
+    water   1.0 # kg
+
+REACTION
+    NaCl    1.0
+    1 moles in 100 steps
+
+END

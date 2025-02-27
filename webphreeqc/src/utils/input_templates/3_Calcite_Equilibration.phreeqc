@@ -1,4 +1,4 @@
-TITLE Pure Water
+TITLE Pure Water with Calcite Equilibration
 SOLUTION 1
     units   mol/kgw
     temp    25.0
@@ -9,8 +9,7 @@ SOLUTION 1
     density 1.0
     water   1.0 # kg
 
-EQUILIBRIUM PHASES
-    Calcite 0
-    CO2(g)  -3.376 # log10(420e-6) = -3.376
+EQUILIBRIUM_PHASES 1
+    Calcite 0.0
 
 END
